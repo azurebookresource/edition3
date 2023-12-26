@@ -1,0 +1,9 @@
+az mysql server create --resource-group azurebook --name azurebook-c4s2 --location westus --admin-user azureuser --admin-password ****** --sku-name B_Gen5_1
+
+
+az mysql server firewall-rule create --resource-group azurebook --server azurebook-c4s2 --name AllowMyIP --start-ip-address 111.11.11.111 --end-ip-address 111.11.11.111
+
+
+az mysql server show --resource-group azurebook --name azurebook-c4s2
+
+az mysql server delete --resource-group azurebook --name azurebook-c4s2

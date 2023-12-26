@@ -1,0 +1,10 @@
+Q1:
+
+SELECT * FROM c
+
+
+
+Q2:
+
+SELECT * FROM c
+WHERE c.Address.City = "Nashville"

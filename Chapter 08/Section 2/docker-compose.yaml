@@ -1,0 +1,15 @@
+version: '3'
+services:
+  vote_back:
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+        - "6379:6379"
+
+  vote_front:
+    image: azurebook/voting_redis-vote_front
+    environment:
+      REDIS: vote_back
+    ports:
+        - "8080:80"

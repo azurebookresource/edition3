@@ -1,0 +1,7 @@
+$ hadoop fs -mkdir /user/hive/input
+
+$ hadoop fs -put ./temperature /user/hive/input/
+
+$ hadoop fs -ls /user/hive/input/
+
+$ /usr/bin/hive

@@ -1,0 +1,86 @@
+[
+	{
+		"id": "10001",
+		"FirstName": "John",
+		"LastName": "Smith",
+		"Email": "js@yahoo.com",
+		"Phone":
+		{
+			"Home": "574-327-8765",
+			"Cell": "654-87-0987"
+		},
+		"Address":
+		{
+		 	"State": "NJ",
+			"City": "Princeton",
+			"ZipCode": "45345"
+		}
+	},
+	{
+		"id": "20002",
+		"LastName": "Cook",
+		"Email": ["ls@gmail.com", "lisa@yahoo.com"],
+		"Phone":
+		{
+			"Home": "345-5347-9876"
+		},
+		"Address":
+		{
+		 	"State": "TN",
+			"ZipCode": "37207"
+		},
+		"Education":
+		{
+			"Degree": "BS",
+			"Year": 1988,
+			"School":
+			{
+				"Name": "Notre Dame",
+				"City": "South Bend",
+				"State": "IN"
+			},
+			"Major": "Chemistray"
+		}
+	},
+	{
+		"id": "30003",
+		"FirstName": "Jake",
+		"LastName": "Duke",
+		"Email": "hk@google.com",
+		"Phone":
+		{
+			"Cell": "765-65-8765"
+		},
+		"Address":
+		{
+		 	"State": "CA",
+			"City": "Riverside",
+			"ZipCode": "20200"
+		},
+		"Education":
+		[
+			{
+				"Degree": "BS",
+				"Year": 2000,
+				"School":
+				{
+					"Name": "IUSB",
+					"City": "South Bend",
+					"State": "IN"
+				},
+				"Major": "Mathematics"
+			},
+			{
+				"Degree": "MS",
+				"Year": 2002,
+				"School":
+				{
+					"Name": "Purdue",
+					"City": "West Lafalette",
+					"State": "IN"
+				},
+				"Major": "Computer Science"
+			}
+		]
+	}
+]
