@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-wp-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-wp-back
+  template:
+    metadata:
+      labels:
+        app: azure-wp-back
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: azure-wp-back
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: somewordpress
+        - name: MYSQL_DATABASE
+          value: wordpress
+        - name: MYSQL_USER
+          value: wordpress
+        - name: MYSQL_PASSWORD
+          value: wordpress
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 3306
+          name: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-wp-back
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: azure-wp-back
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-wp-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-wp-front
+  template:
+    metadata:
+      labels:
+        app: azure-wp-front
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: azure-wp-front
+        image: wordpress:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8000
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: azure-wp-back:3306
+        - name: WORDPRESS_DB_USER
+          value: wordpress
+        - name: WORDPRESS_DB_PASSWORD
+          value: wordpress
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-wp-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-wp-front
